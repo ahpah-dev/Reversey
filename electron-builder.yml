@@ -1,0 +1,42 @@
+appId: app.reversey.desktop
+productName: Reversey
+copyright: Reversey is public domain (Unlicense). Includes REA (MIT), Copyright (c) 2026 morluto.
+directories:
+  output: release
+  buildResources: assets
+# The bundled REA CLI runs as a child process under Electron's Node runtime and
+# must live on disk, so the app is shipped unpacked rather than in an asar.
+asar: false
+files:
+  - package.json
+  - src/**
+  - assets/icon.png
+  - licenses/**
+  - LICENSE
+  - NOTICE.md
+  - "!node_modules/frida/**"
+  - "!node_modules/**/*.{md,markdown,map,ts}"
+  - "!node_modules/**/{test,tests,__tests__,docs,example,examples}/**"
+win:
+  icon: assets/icon.png
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+nsis:
+  artifactName: Reversey-Setup-${version}.exe
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  shortcutName: Reversey
+portable:
+  artifactName: Reversey-${version}-portable.exe
+mac:
+  icon: assets/icon.png
+  category: public.app-category.developer-tools
+  target: [dmg]
+linux:
+  icon: assets/icon.png
+  category: Development
+  target: [AppImage]

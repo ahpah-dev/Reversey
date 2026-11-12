@@ -1,0 +1,30 @@
+{
+  "name": "reversey",
+  "productName": "Reversey",
+  "version": "1.0.0",
+  "description": "Reversey — a polished desktop app for REA (Reverse Engineer Anything)",
+  "author": "Reversey contributors",
+  "homepage": "https://github.com/morluto/rea",
+  "main": "src/main/main.js",
+  "license": "Unlicense",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/ensure-electron.mjs",
+    "start": "electron .",
+    "catalog": "node scripts/gen-catalog.mjs",
+    "icon": "electron scripts/make-icon.cjs",
+    "shot": "node scripts/drive.mjs",
+    "pack": "electron-builder --win --dir",
+    "dist": "electron-builder --win"
+  },
+  "dependencies": {
+    "rea-agents": "6.8.0"
+  },
+  "devDependencies": {
+    "electron": "^45.3.1",
+    "electron-builder": "^26.18.0"
+  },
+  "allowScripts": {
+    "electron@45.3.1": true
+  }
+}
